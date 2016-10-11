@@ -69,8 +69,8 @@ install:
   - mkdir build
   # Huge cheat -- substitute our own tables to save compile time, and
   # a modified IlmImf/CMakeLists.txt that skips the files if already present
-  - copy %APPVEYOR_BUILD_FOLDER%\src\build-scripts\OpenEXR-CMakeLists.txt CMakeLists.txt
-  - copy %APPVEYOR_BUILD_FOLDER%\src\build-scripts\OpenEXR-IlmImf-CMakeLists.txt IlmImf\CMakeLists.txt
+  - copy /Y %APPVEYOR_BUILD_FOLDER%\src\build-scripts\OpenEXR-CMakeLists.txt CMakeLists.txt
+  - copy /Y %APPVEYOR_BUILD_FOLDER%\src\build-scripts\OpenEXR-IlmImf-CMakeLists.txt IlmImf\CMakeLists.txt
   - cd build
   - mkdir IlmImf
   - 7z x -oIlmImf "%APPVEYOR_BUILD_FOLDER%/src/build-scripts/b44ExpLogTable.h.zip"
@@ -93,8 +93,8 @@ install:
   - set CMAKE_PREFIX_PATH=%CMAKE_PREFIX_PATH%;%BOOST_ROOT%
 
   # OpenColorIO
-  # - svn co https://svn.blender.org/svnroot/bf-blender/trunk//lib/win64_vc14/OpenColorIO
-  # - set CMAKE_PREFIX_PATH=%CMAKE_PREFIX_PATH%;%APPVEYOR_BUILD_FOLDER%/deps/OpenColorIO
+  - svn co https://svn.blender.org/svnroot/bf-blender/trunk//lib/win64_vc14/OpenColorIO
+  - set CMAKE_PREFIX_PATH=%CMAKE_PREFIX_PATH%;%APPVEYOR_BUILD_FOLDER%/deps/OpenColorIO
 
   # FFmpeg
   # - svn co https://svn.blender.org/svnroot/bf-blender/trunk//lib/win64/ffmpeg
